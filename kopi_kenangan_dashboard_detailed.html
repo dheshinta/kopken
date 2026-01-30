@@ -1,0 +1,154 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kopi Kenangan Detailed Dashboard</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f5f5dc; /* Light cream color */
+      color: #6d4c41;  /* Darker brown for text */
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background-color: #3e2723; /* Dark coffee color */
+      color: #fff;
+      padding: 10px 20px;
+      text-align: center;
+    }
+    h1 {
+      margin: 0;
+    }
+    .container {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      padding: 20px;
+    }
+    .chart-container {
+      width: 48%;
+      margin: 20px 0;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 30px;
+    }
+    table, th, td {
+      border: 1px solid #6d4c41;
+    }
+    th, td {
+      padding: 12px;
+      text-align: center;
+    }
+    th {
+      background-color: #3e2723;
+      color: white;
+    }
+    .footer {
+      background-color: #3e2723;
+      color: #fff;
+      text-align: center;
+      padding: 10px 0;
+      position: fixed;
+      width: 100%;
+      bottom: 0;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Kopi Kenangan - Detailed Sales Dashboard</h1>
+</header>
+
+<div class="container">
+  <!-- Bar Chart for Coffee Sales -->
+  <div class="chart-container">
+    <canvas id="coffeeSalesChart"></canvas>
+  </div>
+  
+  <!-- Pie Chart for Coffee Preferences -->
+  <div class="chart-container">
+    <canvas id="coffeePreferencesChart"></canvas>
+  </div>
+</div>
+
+<div class="container">
+  <!-- Coffee Sales Data Table -->
+  <table>
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>January Sales</th>
+        <th>February Sales</th>
+        <th>March Sales</th>
+        <th>April Sales</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>Kopi Susu</td><td>200</td><td>250</td><td>300</td><td>220</td></tr>
+      <tr><td>Kopi Hitam</td><td>350</td><td>400</td><td>420</td><td>380</td></tr>
+      <tr><td>Kopi Matcha</td><td>150</td><td>130</td><td>170</td><td>160</td></tr>
+      <tr><td>Kopi Latte</td><td>120</td><td>150</td><td>130</td><td>140</td></tr>
+      <tr><td>Kopi Mocha</td><td>180</td><td>210</td><td>230</td><td>220</td></tr>
+      <tr><td>Kopi Arabica</td><td>190</td><td>220</td><td>250</td><td>240</td></tr>
+      <tr><td>Kopi Robusta</td><td>140</td><td>170</td><td>190</td><td>160</td></tr>
+      <tr><td>Kopi Taro</td><td>110</td><td>120</td><td>150</td><td>140</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="footer">
+  <p>Dashboard © Kopi Kenangan</p>
+</div>
+
+<script>
+  // Coffee Sales Bar Chart
+  const ctx1 = document.getElementById('coffeeSalesChart').getContext('2d');
+  const coffeeSalesChart = new Chart(ctx1, {
+    type: 'bar',
+    data: {
+      labels: ['Kopi Susu', 'Kopi Hitam', 'Kopi Matcha', 'Kopi Latte', 'Kopi Mocha', 'Kopi Arabica', 'Kopi Robusta', 'Kopi Taro'],
+      datasets: [{
+        label: 'Sales by Coffee Type (January - April)',
+        data: [200, 350, 150, 120, 180, 190, 140, 110],
+        backgroundColor: '#d0a1a0',  // Soft coffee color
+        borderColor: '#3e2723',  // Dark coffee color
+        borderWidth: 1
+      }]
+    },
+    options: {
+      responsive: true,
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  });
+
+  // Coffee Preferences Pie Chart
+  const ctx2 = document.getElementById('coffeePreferencesChart').getContext('2d');
+  const coffeePreferencesChart = new Chart(ctx2, {
+    type: 'pie',
+    data: {
+      labels: ['Kopi Susu', 'Kopi Hitam', 'Kopi Matcha', 'Kopi Latte'],
+      datasets: [{
+        label: 'Coffee Preference',
+        data: [40, 25, 10, 10],
+        backgroundColor: ['#6d4c41', '#3e2723', '#9e9d24', '#ff5722'],
+      }]
+    },
+    options: {
+      responsive: true
+    }
+  });
+</script>
+
+</body>
+</html>
